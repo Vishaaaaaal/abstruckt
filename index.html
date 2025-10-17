@@ -3,101 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>abstruckt — Race Derived</title>
-  <meta name="description" content="Dreamed in carbon. Delivered in cotton. The Race Derived tee by Abstruckt." />
+  <title>abstruckt* — Race Derived</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Instrument+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <!-- Top Nav -->
+  <header class="nav">
+    <div class="nav-inner">
       <div class="brand">abstruckt*</div>
-      <nav class="nav">
-        <a href="#collection" class="nav-link">Collection</a>
-        <button class="bag-btn" aria-label="Open bag">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="M7 7V6a5 5 0 0 1 10 0v1h2a1 1 0 0 1 .99 1.141l-1.6 12A2 2 0 0 1 16.41 22H7.59a2 2 0 0 1-1.98-1.859l-1.6-12A1 1 0 0 1 4 7h3Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>
-          <span>BAG</span>
-        </button>
-      </nav>
+      <button class="nav-center">
+        Collection
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="M6 9l6 6 6-6" fill="currentColor"/></svg>
+      </button>
+      <button class="bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="M7 7V6a5 5 0 0 1 10 0v1h2a1 1 0 0 1 .99 1.141l-1.6 12A2 2 0 0 1 16.41 22H7.59a2 2 0 0 1-1.98-1.859l-1.6-12A1 1 0 0 1 4 7h3Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>
+        <span>BAG</span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1 class="display">Race<br/>Derived</h1>
-          <p class="tagline">Dreamed in carbon. Delivered in cotton.</p>
-          <a href="#collection" class="cta">Explore
-            <svg viewBox="0 0 24 24" class="icon"><path d="M12 4v16m0 0l-6-6m6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-inner">
+      <!-- Background word -->
+      <div class="bg-word">Race Derived</div>
+
+      <!-- Left large model -->
+      <figure class="model-left card shadow">
+        <img src="assets/hero-left.jpg" alt="Model seated wearing tee" />
+      </figure>
+
+      <!-- Right back model -->
+      <figure class="model-right card shadow">
+        <img src="assets/hero-right.jpg" alt="Back view model wearing tee" />
+      </figure>
+
+      <!-- Play pill -->
+      <button class="play-pill shadow" aria-label="Play product video">
+        <svg viewBox="0 0 24 24" class="icon-xl" aria-hidden="true"><path d="M9 7l8 5-8 5V7z"/></svg>
+      </button>
+
+      <!-- New badge -->
+      <div class="badge-new shadow">
+        <span class="aster">*</span>
+        <span>New</span>
+      </div>
+
+      <!-- Explore CTA -->
+      <a href="#explore" class="cta shadow">
+        <span>Explore</span>
+        <span class="dot"></span>
+      </a>
+
+      <!-- Round chips -->
+      <div class="chips">
+        <div class="chip seatbelt shadow">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M6 4h4l4 8h4l-2 8H8L6 4z"/></svg>
         </div>
-        <div class="hero-art">
-          <div class="hero-card">
-            <img src="assets/hero-main.jpg" alt="Abstruckt Race Derived tee hero" class="hero-img"/>
-            <div class="ring">
-              <!-- Nürburgring mark placeholder; replace with your licensed graphic -->
-              <img src="assets/nurburgring.png" alt="Track outline" class="ring-img"/>
-            </div>
+        <div class="chip photo shadow">
+          <img src="assets/thumb-seatbelt.jpg" alt="Seatbelt yellow" />
+        </div>
+        <div class="chip track shadow">
+          <div class="track-inner">
+            <img src="assets/nurburgring.png" alt="Track outline" />
+          </div>
+          <div class="track-copy">
+            <div>Dreamed in carbon.</div>
+            <div class="bold">Delivered in cotton.</div>
           </div>
         </div>
       </div>
 
-      <div class="badges container">
-        <div class="badge new">
-          <span class="star">★</span>
-          <span>New</span>
-        </div>
+      <!-- Bottom disclaimer pill -->
+      <div class="disclaimer shadow">
+        Not a “ REAL” seatbelt
+        <span class="wink">☺︎</span>
       </div>
-    </section>
-
-    <!-- COLLECTION ROW -->
-    <section id="collection" class="collection container">
-      <div class="collection-grid">
-        <figure class="card tall">
-          <img src="assets/tee-front.jpg" alt="Race Derived Tee — front" />
-        </figure>
-        <figure class="card wide">
-          <img src="assets/wide-shot.jpg" alt="Wide studio shot" />
-        </figure>
-        <figure class="card">
-          <img src="assets/tee-back.jpg" alt="Race Derived Tee — back" />
-        </figure>
-        <aside class="card promo">
-          <div class="promo-inner">
-            <div class="promo-icon">
-              <svg viewBox="0 0 24 24" class="icon"><path d="M7 11h10M9 15h6M8 4h8l3 6v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10l3-6Z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <h3>Not a “REAL” seatbelt</h3>
-              <p>Be responsible. Wear a real one.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> abstruckt*</p>
-      <p class="fine">This site is a fan-inspired racing aesthetic storefront mock. Replace placeholder images in <code>/assets</code>.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
-  </script>
 </body>
 </html>
