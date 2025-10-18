@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>abstruckt* – GT3 Tee</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="product-page">
+  <div class="page-content">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/abstruckt.png" alt="abstruckt logo" />
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-collection">
+        <a class="nav-link" href="#collection">Collection ▼</a>
+        <div class="mega-menu" role="menu" aria-label="Collection menu">
+          <div class="mega-menu__content">
+            <div class="mega-menu__column">
+              <span class="mega-menu__eyebrow">Available</span>
+              <a class="mega-menu__item" href="product.html">The Race Derived Tee</a>
+            </div>
+            <div class="mega-menu__column">
+              <span class="mega-menu__eyebrow">New Collections</span>
+              <span class="mega-menu__item mega-menu__item--disabled">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <button class="bag-btn" type="button" aria-label="Open bag">
+      <span class="material-icons-outlined bag-icon" aria-hidden="true">shopping_bag</span>
+      <span class="bag-text">BAG</span>
+    </button>
+  </header>
+
+  <main class="product-main" id="collection">
+    <section class="product-gallery">
+      <div class="product-gallery__grid">
+        <figure class="product-gallery__hero">
+          <img src="assets/productpage1/producthero.png" alt="GT3 tee hero collage showing front, details, and back">
+        </figure>
+      </div>
+    </section>
+
+    <section class="product-summary">
+      <div class="product-info-card">
+        <div class="product-info-card__header">
+          <h1 class="product-title">The Race Derived Tee</h1>
+          <button class="product-fav" type="button" aria-label="Save to favourites">
+            <span class="material-icons-outlined" aria-hidden="true">favorite_border</span>
+          </button>
+        </div>
+
+        <div class="product-option-group">
+          <span class="product-option-label">Size</span>
+          <div class="product-size-list" role="radiogroup" aria-label="Choose size">
+            <button class="product-size is-active" type="button" aria-pressed="true">S</button>
+            <button class="product-size" type="button" aria-pressed="false">M</button>
+            <button class="product-size" type="button" aria-pressed="false">L</button>
+            <button class="product-size" type="button" aria-pressed="false">XL</button>
+          </div>
+        </div>
+
+        <div class="product-option-group">
+          <span class="product-option-label">Quantity</span>
+          <div class="product-qty">
+            <button type="button" aria-label="Decrease quantity">-</button>
+            <span aria-live="polite">1</span>
+            <button type="button" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="product-purchase-card">
+        <div class="product-price">₹799</div>
+        <a class="product-buy-btn" href="#" role="button">Buy Now <span aria-hidden="true">→</span></a>
+
+        <div class="product-perks">
+          <div class="product-perk">
+            <span class="product-perk__icon">🌿</span>
+            <span class="product-perk__label">100% Cotton</span>
+          </div>
+          <div class="product-perk">
+            <span class="product-perk__icon">🧺</span>
+            <span class="product-perk__label">Machine Washable</span>
+          </div>
+          <div class="product-banner">
+            <span class="product-banner__icon" aria-hidden="true">⚠️</span>
+            <div>
+              <span class="product-banner__eyebrow">Be Responsible</span>
+              <span class="product-banner__title">Wear a “Real” Seatbelt</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  </div>
+</body>
+</html>
