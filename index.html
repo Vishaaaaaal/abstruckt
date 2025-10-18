@@ -1,75 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>abstruckt* — Figma faithful</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>abstruckt*</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="stage-wrap">
-    <div id="stage" role="img" aria-label="Abstruckt home hero">
-      <div class="bg" style="left:0; top:0; width:3635px; height:3037px;"></div>
-      <div class="logo" style="left:144px; top:95px;">abstruckt*</div>
-      <div class="collection" style="left:1569px; top:144px;">Collection ▾</div>
-      <div class="bag" style="left:3212px; top:119px; width:274px; height:123px;">
-        <div class="bag-pill"></div>
-        <div class="bag-icon"></div>
-        <div class="bag-text">BAG</div>
-      </div>
-      <div class="race-word" style="left:128px; top:384px;">Race Derived</div>
-      <div class="card" style="left:593px; top:481px; width:1007px; height:1155px;">
-        <img src="assets/hero-left.jpg" alt="" />
-      </div>
-      <div class="strip" style="left:220px; top:1077px; width:2564px; height:567px;"></div>
-      <div class="card" style="left:2397px; top:667px; width:480px; height:977px;">
-        <img src="assets/hero-right.jpg" alt="" />
-        <img class="ring" src="assets/nurburgring.png" alt="" style="left:111px; top:267px; width:325px; height:325px;" />
-      </div>
-      <div class="pill new" style="left:258px; top:1132px; width:417px; height:178px;">
-        <span class="aster">*</span>
-        <span>New</span>
-      </div>
-      <div class="explore" style="left:220px; top:1709px; width:662px; height:186px;">
-        <div class="btn">Explore</div>
-        <div class="dot"></div>
-      </div>
-      <div class="thumb" style="left:1286px; top:1709px; width:432px; height:322px;">
-        <img src="assets/thumb-1.jpg" alt="" />
-      </div>
-      <div class="thumb" style="left:1770px; top:1709px; width:432px; height:322px;">
-        <img src="assets/thumb-2.jpg" alt="" />
-      </div>
-      <div class="track-chip" style="left:2299px; top:1700px; width:1186px; height:322px;">
-        <div class="track-circle"></div>
-        <div class="track-copy">
-          <div>Dreamed in carbon.</div>
-          <div class="bold">Delivered in cotton.</div>
+  <div class="page-content">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img src="assets/abstruckt.png" alt="abstruckt logo" />
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-collection">
+        <a class="nav-link" href="#collection">Collection ▼</a>
+        <div class="mega-menu" role="menu" aria-label="Collection menu">
+          <div class="mega-menu__content">
+            <div class="mega-menu__column">
+              <span class="mega-menu__eyebrow">Available</span>
+              <a class="mega-menu__item" href="#collection">The Race Derived Tee</a>
+            </div>
+            <div class="mega-menu__column">
+              <span class="mega-menu__eyebrow">New Collections</span>
+              <span class="mega-menu__item mega-menu__item--disabled">Coming Soon</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="disclaimer" style="left:220px; top:2131px; width:1043px; height:134px;">
-        Not a “ REAL” seatbelt <span class="wink">☺︎</span>
-      </div>
+    </nav>
+
+    <button class="bag-btn" type="button" aria-label="Open bag">
+      <span class="material-icons-outlined bag-icon" aria-hidden="true">shopping_bag</span>
+      <span class="bag-text">BAG</span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section id="collection" class="hero-simple" aria-label="Featured">
+    <img
+      class="hero-simple__img"
+      src="Assets/heroimage4.png"
+      alt="Model wearing GT3 tee" loading="eager" decoding="async"
+    />
+
+    <!-- CTA: flag background + play button -->
+    <div class="hero-cta">
+      <img class="hero-cta__flag" src="assets/flag.png" alt="" aria-hidden="true" />
+      <a class="cta-pill" href="product.html" aria-label="Open product page">
+        <span class="cta-pill__play" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+  <!-- WIDGETS -->
+<section class="widgets" aria-label="Quick widgets">
+  <div class="widgets__container">
+
+    <!-- Widget strip -->
+    <div class="widgets__row widgets__row--strip">
+        <a class="widget-img widget-img--explore" href="product.html" aria-label="Explore new arrivals">
+          <img src="Assets/widgets/button.png" alt="Explore button">
+        </a>
+
+      <!-- Chips (PNG) -->
+      <a class="widget-img widget-img--icon" href="#" aria-label="Seatbelt icon">
+        <img src="Assets/widgets/seatbelt.png" alt="Seatbelt icon">
+      </a>
+
+      <a class="widget-img widget-img--photo" href="#" aria-label="Seatbelt detail">
+        <img src="Assets/widgets/porsche.png" alt="Seatbelt close-up">
+      </a>
+
+      <a class="widget-banner widget-banner--hero" href="#" aria-label="Dreamed in carbon banner">
+        <img src="Assets/widgets/carbon.png"
+             alt="Dreamed in carbon. Delivered in cotton.">
+      </a>
     </div>
   </div>
-
-  <script>
-    const stage = document.getElementById('stage');
-    const wrap = document.getElementById('stage-wrap');
-    function scaleStage(){
-      const baseW=3635, baseH=3037;
-      const sw = window.innerWidth;
-      const sh = window.innerHeight;
-      const scale = Math.min(sw/baseW, sh/baseH);
-      stage.style.transform = 'scale(' + scale + ')';
-      wrap.style.height = Math.ceil(baseH*scale) + 'px';
-      stage.style.left = 'calc(50% - ' + (baseW/2) + 'px)';
-    }
-    window.addEventListener('resize', scaleStage);
-    scaleStage();
-  </script>
-</body>
-</html>
+</section>
+  </div>
