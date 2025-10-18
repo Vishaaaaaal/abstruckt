@@ -487,6 +487,8 @@ html, body {
 /* ================= PRODUCT PAGE ================= */
 body.product-page{
   --layout-content-offset-y: 0px;
+  --product-hero-offset-y: 0px;
+  --product-summary-offset-y: 0px;
   background:#E4E4E4;
 }
 body.product-page .page-content{
@@ -496,6 +498,9 @@ body.product-page .page-content{
   padding: clamp(32px, 6vw, 64px) var(--page-pad-x) clamp(80px, 8vw, 120px);
   display: grid;
   gap: clamp(32px, 6vw, 72px);
+}
+.product-gallery{
+  transform: translateY(var(--product-hero-offset-y));
 }
 .product-gallery__grid{
   display: block;
@@ -516,6 +521,7 @@ body.product-page .page-content{
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   gap: clamp(24px, 5vw, 48px);
+  transform: translateY(var(--product-summary-offset-y));
 }
 .product-info-card,
 .product-purchase-card{
