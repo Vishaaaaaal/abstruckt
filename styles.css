@@ -487,8 +487,8 @@ html, body {
 /* ================= PRODUCT PAGE ================= */
 body.product-page{
   --layout-content-offset-y: 0px;
-  --product-hero-offset-y: 0px;
-  --product-summary-offset-y: 0px;
+  --product-hero-offset-y: -40px;
+  --product-summary-offset-y: -80px;
   background:#E4E4E4;
 }
 body.product-page .page-content{
