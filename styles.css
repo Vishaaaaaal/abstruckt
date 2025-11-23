@@ -1481,7 +1481,7 @@ body.product-page .page-content{
 
     --hero-width: 98vw;            /* overall width */
     --hero-max-width: 380px;       /* upper cap */
-    --hero-scale: 1.4;             /* zoom in/out */
+    --hero-scale: 1.35;             /* zoom in/out */
     --hero-top-margin: 6vw;        /* space above hero */
     --hero-bottom-margin: 4vw;     /* space below hero */
     --hero-radius: 0px;            /* rounding for the image */
