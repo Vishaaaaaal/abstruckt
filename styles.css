@@ -22,7 +22,12 @@ html, body {
   z-index: 20;
 }
 
-.logo img { height: 27px; width: auto; }
+.logo img {
+  display: block;      /* removes baseline clipping */
+  height: auto;
+  max-height: 30px;    /* cap size but keep aspect */
+  width: auto;
+}
 
 .nav {
   flex: 1;
@@ -168,9 +173,12 @@ html, body {
 
 /* text stays crisp above animation */
 .bag-text {
-  font-family: 'Shadows Into Light Two', cursive;
-  font-size: 18px;
-  letter-spacing: 1px;
+  font-family: "SF Pro Display", "SF Pro Text", "SF Pro", 
+               -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+               Helvetica, Arial, sans-serif !important;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
   z-index: 2;
 }
 
@@ -182,15 +190,15 @@ html, body {
   transform: translateY(var(--layout-content-offset-y));
   padding: clamp(12px, 2.5vw, 32px) clamp(16px, 4vw, 48px)
            clamp(12px, 2.5vw, 32px) clamp(16px, 4vw, 48px);
-  padding-right: clamp(140px, 16vw, 260px);
+  padding-right: clamp(16px, 6vw, 96px);
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
   align-items: center;
 }
 
 /* Hero image (left) */
 .hero-simple__img {
-  width: 90%;
+  width: 100%;
   max-height: calc(100vh - 140px);
   height: auto;
   object-fit: contain;
@@ -200,12 +208,13 @@ html, body {
 
 /* ========== CTA STACK (flag + pill button) ========== */
 .hero-cta {
-  position: absolute;
-  right: clamp(28px, 7.5vw, 140px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(180px, 16vw, 300px);
+  position: relative;
+  justify-self: end;
+  width: clamp(180px, 16vw, 260px);
   aspect-ratio: 9 / 12;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* Race flag with feathered edges */
@@ -289,21 +298,91 @@ html, body {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
+  :root{
+    --layout-content-offset-y: -20px;
+    --widget-explore-x: 0px;
+    --widget-explore-y: 0px;
+    --widget-explore-width: clamp(200px, 46vw, 320px);
+    --widget-explore-scale: 1;
+
+    --widget-icon-x: 0px;
+    --widget-icon-y: 0px;
+    --widget-icon-width: clamp(140px, 40vw, 180px);
+    --widget-icon-scale: 1;
+
+    --widget-photo-x: 0px;
+    --widget-photo-y: 0px;
+    --widget-photo-width: clamp(140px, 40vw, 180px);
+    --widget-photo-scale: 1;
+
+    --widget-banner-x: 0px;
+    --widget-banner-y: 0px;
+    --widget-banner-width: clamp(280px, 80vw, 420px);
+    --widget-banner-scale: 1;
+  }
+  .header{
+    padding: 16px clamp(16px, 6vw, 32px);
+    flex-wrap: wrap;
+    gap: clamp(12px, 5vw, 24px);
+  }
+  .logo img{ height: 22px; }
+  .logo{ order: 0; }
+  .nav{ width: 100%; justify-content: center; order: 1; }
+  .nav-link{ font-size: 14px; letter-spacing: 0.12em; }
+  .nav-collection::after{ width: min(92vw, 520px); }
+  .bag-btn{ padding: 6px 12px; border-radius: 10px; order: 2; margin-left: auto; }
+  .bag-text{ font-size: 16px; }
+
+  .mega-menu{
+    width: min(92vw, 520px);
+    padding: clamp(28px, 9vw, 56px);
+    border-radius: clamp(28px, 9vw, 44px);
+  }
+  .mega-menu__content{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(18px, 5vw, 24px);
+  }
+  .mega-menu__column{
+    min-width: 100%;
+  }
+
   .hero-simple {
-    padding-right: clamp(16px, 5vw, 40px);
+    grid-template-columns: 1fr;
+    padding: clamp(12px, 5vw, 32px) clamp(16px, 6vw, 28px)
+             clamp(12px, 5vw, 32px) clamp(16px, 6vw, 28px);
+    min-height: auto;
+    gap: clamp(18px, 5vw, 28px);
   }
   .hero-simple__img {
     width: 100%;
+    object-position: center;
   }
   .hero-cta {
-    right: 50%;
-    transform: translate(50%, -40%);
-    width: clamp(190px, 42vw, 280px);
+    justify-self: center;
+    width: clamp(200px, 48vw, 260px);
   }
   .cta-pill {
-    width: 66%;
-    height: 86%;
+    width: 64%;
+    height: 84%;
   }
+
+  .widgets{
+    padding: clamp(16px, 6vw, 24px) clamp(16px, 6vw, 28px) clamp(28px, 8vw, 40px);
+    transform: translateY(0);
+  }
+  .widgets__row{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(14px, 4vw, 22px);
+  }
+ .widget-img,
+  .widget-banner{
+    flex: 0 1 clamp(220px, 82vw, 360px);
+    transform: none;
+  }
+  .widget-banner img{ width: 100%; height: auto; }
 }
 /* ================= WIDGETS (aligned + tight) ================= */
 :root{
@@ -336,7 +415,7 @@ html, body {
   --widget-banner-scale: 1.05;
 
   /* Global vertical offset for everything below the header */
-  --layout-content-offset-y: -50px;
+  --layout-content-offset-y: -20px;
 }
 
 /* match page gutter with hero/header */
@@ -487,8 +566,47 @@ html, body {
 /* ================= PRODUCT PAGE ================= */
 body.product-page{
   --layout-content-offset-y: 0px;
-  --product-hero-offset-y: -40px;
-  --product-summary-offset-y: -80px;
+  --product-hero-offset-y: -20px;
+  --product-summary-offset-y: -70px;
+  --product-gallery-radius: 0;
+  --product-gallery-fit: contain;
+  --product-gallery-background: transparent;
+  --gallery-primary-scale: 0.86;
+  --gallery-primary-offset-x: -40px;
+  --gallery-primary-offset-y: -30px;
+  --gallery-primary-radius: var(--product-gallery-radius);
+  --gallery-primary-fit: contain;
+  --gallery-primary-width: auto;
+  --gallery-primary-height: auto;
+  --gallery-primary-justify: start;
+  --gallery-primary-align: start;
+  --gallery-top-scale: 0.85;
+  --gallery-top-offset-x: -100px;
+  --gallery-top-offset-y: -10px;
+  --gallery-top-radius: var(--product-gallery-radius);
+  --gallery-top-fit: contain;
+  --gallery-top-width: auto;
+  --gallery-top-height: auto;
+  --gallery-top-justify: start;
+  --gallery-top-align: start;
+  --gallery-bottom-scale: 0.86;
+  --gallery-bottom-offset-x: -100px;
+  --gallery-bottom-offset-y: -45px;
+  --gallery-bottom-radius: var(--product-gallery-radius);
+  --gallery-bottom-fit: contain;
+  --gallery-bottom-width: auto;
+  --gallery-bottom-height: auto;
+  --gallery-bottom-justify: start;
+  --gallery-bottom-align: start;
+  --gallery-rear-scale: 1.3;
+  --gallery-rear-offset-x: -65px;
+  --gallery-rear-offset-y: 55px;
+  --gallery-rear-radius: var(--product-gallery-radius);
+  --gallery-rear-fit: contain;
+  --gallery-rear-width: auto;
+  --gallery-rear-height: auto;
+  --gallery-rear-justify: start;
+  --gallery-rear-align: start;
   background:#E4E4E4;
 }
 body.product-page .page-content{
@@ -503,19 +621,88 @@ body.product-page .page-content{
   transform: translateY(var(--product-hero-offset-y));
 }
 .product-gallery__grid{
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 2.6fr) minmax(0, 1.3fr) minmax(0, 1.5fr);
+  grid-auto-rows: auto;
+  align-items: start;
+  gap: clamp(16px, 3vw, 28px);
 }
-.product-gallery__hero{
+.product-gallery__item{
   position: relative;
-  border-radius: clamp(26px, 4vw, 48px);
-  overflow: hidden;
-  background:#E4E4E4;
+  border-radius: var(--product-gallery-radius);
+  overflow: visible;
+  background: var(--product-gallery-background);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
-.product-gallery__hero img{
-  width: 100%;
+.product-gallery__item img{
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   display:block;
-  object-fit: cover;
+  object-fit: var(--product-gallery-fit, cover);
+  transform-origin: center;
+  border-radius: var(--product-gallery-radius);
+}
+.product-gallery__item--primary{
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+  border-radius: var(--product-gallery-radius);
+  inline-size: var(--gallery-primary-width);
+  block-size: var(--gallery-primary-height);
+  justify-self: var(--gallery-primary-justify);
+  align-self: var(--gallery-primary-align);
+}
+.product-gallery__item--top{
+  grid-column: 2;
+  grid-row: 1;
+  inline-size: var(--gallery-top-width);
+  block-size: var(--gallery-top-height);
+  justify-self: var(--gallery-top-justify);
+  align-self: var(--gallery-top-align);
+}
+.product-gallery__item--bottom{
+  grid-column: 2;
+  grid-row: 2;
+  inline-size: var(--gallery-bottom-width);
+  block-size: var(--gallery-bottom-height);
+  justify-self: var(--gallery-bottom-justify);
+  align-self: var(--gallery-bottom-align);
+}
+.product-gallery__item--rear{
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  border-radius: var(--product-gallery-radius);
+  inline-size: var(--gallery-rear-width);
+  block-size: var(--gallery-rear-height);
+  justify-self: var(--gallery-rear-justify);
+  align-self: var(--gallery-rear-align);
+}
+.product-gallery__item--primary img{
+  transform: translate(var(--gallery-primary-offset-x), var(--gallery-primary-offset-y))
+             scale(var(--gallery-primary-scale));
+  border-radius: var(--gallery-primary-radius);
+  object-fit: var(--gallery-primary-fit);
+}
+.product-gallery__item--top img{
+  transform: translate(var(--gallery-top-offset-x), var(--gallery-top-offset-y))
+             scale(var(--gallery-top-scale));
+  border-radius: var(--gallery-top-radius);
+  object-fit: var(--gallery-top-fit);
+}
+.product-gallery__item--bottom img{
+  transform: translate(var(--gallery-bottom-offset-x), var(--gallery-bottom-offset-y))
+             scale(var(--gallery-bottom-scale));
+  border-radius: var(--gallery-bottom-radius);
+  object-fit: var(--gallery-bottom-fit);
+}
+.product-gallery__item--rear img{
+  transform: translate(var(--gallery-rear-offset-x), var(--gallery-rear-offset-y))
+             scale(var(--gallery-rear-scale));
+  border-radius: var(--gallery-rear-radius);
+  object-fit: var(--gallery-rear-fit);
 }
 .product-summary{
   display: grid;
@@ -556,10 +743,23 @@ body.product-page .page-content{
   cursor:pointer;
   transition: transform .18s ease, border-color .18s ease;
 }
+
+/* hover only */
 .product-fav:hover{
   transform: translateY(-2px);
   border-color: rgba(0,0,0,0.3);
 }
+
+/* active (clicked) state */
+.product-fav.is-active{
+  background: #ffe6ea;
+  border-color: #ff4b5c;
+}
+
+.product-fav.is-active .material-icons-outlined{
+  color: #ff4b5c;
+}
+
 .product-option-group{
   display:flex;
   flex-direction: column;
@@ -686,6 +886,15 @@ body.product-page .page-content{
 }
 
 @media (max-width: 960px){
+  .product-gallery__grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(180px, 42vw);
+  }
+  .product-gallery__item--primary,
+  .product-gallery__item--rear{
+    grid-column: span 2;
+    grid-row: auto;
+  }
   .product-summary{
     grid-template-columns: 1fr;
   }
@@ -698,8 +907,802 @@ body.product-page .page-content{
   .product-main{
     padding: clamp(24px, 10vw, 40px) clamp(16px, 6vw, 28px) clamp(80px, 12vw, 120px);
   }
-  .product-gallery__badge{
-    top: 16px;
-    left: 16px;
+  .product-gallery__grid{
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(220px, 60vw);
+  }
+  .product-gallery__item--primary,
+  .product-gallery__item--rear,
+  .product-gallery__item--top,
+  .product-gallery__item--bottom{
+    grid-column: span 1;
+  }
+  .product-summary{
+    gap: clamp(24px, 8vw, 32px);
+  }
+}
+
+
+
+
+/* =====================================
+   MOBILE AMAZON-STYLE SCROLL GALLERY
+   ===================================== */
+
+@media (max-width: 768px) {
+
+  /* Turn the product gallery into a horizontal scroll strip */
+  .product-gallery {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 14px;
+  }
+
+  /* Hide scrollbar (optional) */
+  .product-gallery::-webkit-scrollbar {
+    display: none;
+  }
+  .product-gallery {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+  }
+
+  /* Each image behaves like a snap item */
+  .product-gallery__item {
+    flex: 0 0 85%;        /* visible like Amazon product images */
+    scroll-snap-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Reset all transforms from desktop mode */
+  .product-gallery__item img {
+    transform: none !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/* ======================================================
+   PERFECT MOBILE HOMEPAGE (Figma Accurate)
+   ====================================================== */
+@media (max-width: 900px) {
+
+  :root {
+    --layout-content-offset-y: 0px;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* HOME CONTAINER */
+  .page-content {
+    padding: 0 16px;
+  }
+
+  /* ===============================
+        HERO SECTION
+     =============================== */
+  .hero-simple {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 0 12px;
+    background: transparent;
+    box-shadow: none;
+    min-height: auto;
+    transform: none;
+  }
+
+  /* HERO IMAGE */
+  .hero-simple__img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* SMALL "New" card stays attached to image */
+  .hero-simple__label {
+    transform: none !important;
+  }
+
+  /* ===============================
+        PLAY CTA (THE BIG BUTTON)
+     =============================== */
+  .hero-cta {
+    width: 140px !important;
+    height: 140px !important;
+    padding: 0;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+  .cta-pill {
+    width: 80% !important;
+    height: 80% !important;
+    border-radius: 999px;
+  }
+
+  /* ===============================
+        WIDGET ROW
+     =============================== */
+  .widgets {
+    margin-top: 0;
+    padding-top: 0;
+    background: transparent;
+    transform: none;
+  }
+
+  .widgets__row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  /* Explore + Seatbelt side-by-side */
+  .widget-img {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+    margin: 0;
+    padding: 0;
+    border-radius: 18px;
+  }
+
+  /* Big image takes full width */
+  .widget-banner {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 4px;
+    border-radius: 18px;
+  }
+
+  .widget-img img,
+  .widget-banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+}
+
+/* Phones under 480px */
+@media (max-width: 480px) {
+  .widget-img {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ======================================================
+   MOBILE HOMEPAGE: MATCH FIGMA LAYOUT (≤ 900px wide)
+   ====================================================== */
+@media (max-width: 900px) {
+
+  :root {
+    --layout-content-offset-y: 0px;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* -------- HERO -------- */
+  .hero-simple {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 16px 8px;
+    min-height: auto;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .hero-simple__img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Hide the big vertical play pill on mobile */
+  .hero-cta {
+    display: none !important;
+  }
+
+  /* -------- WIDGET STRIP UNDER HERO -------- */
+
+  .widgets {
+    background: transparent;
+    padding: 8px 16px 24px;
+    margin: 0;
+    transform: none;
+  }
+
+  /* Use GRID to get: icon + photo + yellow pill in one row,
+     Explore full-width on row below */
+  .widgets__row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 100%;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  .widget-img,
+  .widget-banner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    flex: none;
+  }
+
+  .widget-img img,
+  .widget-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* icon circle */
+  .widget-img--icon {
+    grid-column: span 1;
+  }
+
+  /* photo circle */
+  .widget-img--photo {
+    grid-column: span 1;
+  }
+
+  /* yellow "Dreamed in carbon" banner – take 2 columns */
+  .widget-banner--hero {
+    grid-column: span 2;
+  }
+
+  /* Explore button – full width on its own row */
+  .widget-img--explore {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+  }
+}
+
+/* Extra safety for very small phones */
+@media (max-width: 480px) {
+  .widgets__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .widget-banner--hero {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ========= FINAL MOBILE WIDGET LAYOUT (MATCH FIGMA) ========= */
+@media (max-width: 900px) {
+
+  /* Hide the big vertical hero CTA on mobile */
+  .hero-cta {
+    display: none !important;
+  }
+
+  .widgets {
+    background: transparent;
+    padding: 8px 16px 24px;
+    margin: 0;
+    transform: none;
+  }
+
+  /* Grid: 4 columns → icon, photo, banner (span 2), then Explore full width */
+  .widgets__row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 100%;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  .widget-img,
+  .widget-banner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    flex: none;
+    transform: none !important;   /* kill desktop offsets */
+  }
+
+  .widget-img img,
+  .widget-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Row 1 */
+  .widget-img--icon {
+    grid-column: 1;
+  }
+
+  .widget-img--photo {
+    grid-column: 2;
+  }
+
+  .widget-banner--hero {
+    grid-column: 3 / 5;  /* columns 3–4 */
+  }
+
+  /* Row 2 – Explore full width */
+  .widget-img--explore {
+    grid-column: 1 / 5;
+    margin-top: 6px;
+  }
+}
+
+
+/* ===========================================
+   FINAL FIGMA-PERFECT MOBILE TUNING (≤ 900px)
+   =========================================== */
+
+@media (max-width: 900px) {
+
+  /* Tighter overall spacing */
+  .hero-simple {
+    padding: 20px 14px 4px;
+    gap: 14px;
+  }
+
+  .widgets {
+    padding: 4px 14px 10px;
+  }
+
+  .widgets__row {
+    gap: 8px;
+  }
+
+  /* SHRINK EXPLORE */
+  .widget-img--explore {
+    max-width: 70%;       /* Figma-like width */
+    margin: 12px auto 0;  /* center it properly */
+    transform: none !important;
+  }
+
+  .widget-img--explore img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* SHRINK ICONS + PHOTO */
+  .widget-img--icon,
+  .widget-img--photo {
+    max-width: 54px;       /* EXACT size from your Figma */
+    height: 54px;
+    border-radius: 999px;
+  }
+
+  .widget-img--icon img,
+  .widget-img--photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* SHRINK YELLOW BANNER */
+  .widget-banner--hero {
+    height: 54px;
+    border-radius: 16px;
+  }
+
+  .widget-banner--hero img {
+    height: 100%;
+  }
+
+  /* Give the bottom badge section correct spacing */
+  .footer-badge {
+    margin-top: 12px !important;
+  }
+
+  /* Remove giant empty grey section */
+  body, html {
+    background: #E4E4E4;
+  }
+
+  .next-section {
+    display: none;  /* If you want to fully remove it on mobile */
+  }
+}
+
+/* MOBILE – Figma-style widgets layout */
+@media (max-width: 768px) {
+  .home-page .widgets {
+    margin-top: clamp(20px, 4vh, 32px);
+  }
+
+  .home-page .widgets__container {
+    max-width: 420px;
+    padding: 0 16px 40px;
+  }
+
+  .home-page .widgets__row {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 12px;
+    row-gap: 14px;
+  }
+
+  .home-page .widget-img,
+  .home-page .widget-banner {
+    --widget-height: auto;
+    transform: translate(0, 0) scale(1); /* kill desktop offsets on mobile */
+  }
+
+  /* Row 1: icon + photo + yellow banner */
+  .home-page .widget-img--icon,
+  .home-page .widget-img--photo {
+    --widget-basis: 64px;       /* round chips */
+  }
+
+  .home-page .widget-banner--hero {
+    --widget-basis: 210px;      /* yellow “Dreamed in carbon” chip */
+  }
+
+  /* Row 2: Explore CTA under the chips */
+  .home-page .widget-img--explore {
+    --widget-basis: 260px;
+    order: 1;                   /* comes after the three chips */
+    margin-top: 12px;
+  }
+
+  /* Make sure the chips stay in the first row */
+  .home-page .widget-img--icon,
+  .home-page .widget-img--photo,
+  .home-page .widget-banner--hero {
+    order: 0;
+  }
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   MOBILE HOMEPAGE — FULLY TWEAKABLE SIZING PANEL (≤ 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  .home-page {
+    /* ===== MASTER SIZE CONTROLS (EDIT THESE ONLY) ===== */
+
+    /* Explore button width relative to screen */
+    --explore-width: 58vw;          /* increase/decrease */
+
+    /* Icon chip size */
+    --icon-size: 14vw;              /* round seatbelt icon */
+
+    /* Photo chip size */
+    --photo-size: 14vw;
+
+    /* Yellow banner width */
+    --banner-width: 42vw;
+
+    /* Yellow banner height */
+    --banner-height: 12vw;
+
+    /* Vertical spacing */
+    --widget-gap: 14px;
+    --explore-top-gap: 14px;
+  }
+
+  /* ========== APPLYING THE VARIABLES ========== */
+
+  .widgets__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--widget-gap);
+    justify-content: center;
+  }
+
+  /* Icon chip */
+  .widget-img--icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
+  /* Photo chip */
+  .widget-img--photo {
+    width: var(--photo-size);
+    height: var(--photo-size);
+  }
+
+  /* Yellow banner */
+  .widget-banner--hero {
+    width: var(--banner-width);
+    height: var(--banner-height);
+  }
+
+  /* Explore button (full row) */
+  .widget-img--explore {
+    width: var(--explore-width);
+    margin-top: var(--explore-top-gap);
+    order: 2;                /* explore goes below chips */
+  }
+
+  /* Chips row (icon + photo + banner) */
+  .widget-img--icon,
+  .widget-img--photo,
+  .widget-banner--hero {
+    order: 1;
+  }
+
+  /* Reset transforms for mobile */
+  .widget-img,
+  .widget-banner {
+    transform: none !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   MOBILE HERO — FULLY TWEAKABLE SIZING PANEL (≤ 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  .home-page {
+    /* ===== HERO SIZE CONTROLS (EDIT THESE ONLY) ===== */
+
+    --hero-width: 98vw;            /* overall width */
+    --hero-max-width: 380px;       /* upper cap */
+    --hero-scale: 1.4;             /* zoom in/out */
+    --hero-top-margin: 6vw;        /* space above hero */
+    --hero-bottom-margin: 4vw;     /* space below hero */
+    --hero-radius: 0px;            /* rounding for the image */
+    --hero-extra-bottom: 4vh;     /* extra room so feet aren’t cut */
+  }
+
+  /* ========== APPLYING HERO VARIABLES ========== */
+
+  .hero-simple {
+    margin-top: var(--hero-top-margin);
+    margin-bottom: var(--hero-bottom-margin);
+
+    overflow: visible;                     /* IMPORTANT: stop clipping */
+    padding-bottom: var(--hero-extra-bottom);
+  }
+
+  .hero-simple__img {
+    width: var(--hero-width);
+    max-width: var(--hero-max-width);
+    transform: scale(var(--hero-scale));
+    transform-origin: top center;         /* grow downward */
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--hero-radius);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+
+
+
+/* =========================================================
+   MOBILE WIDGET PANEL — FULLY TWEAKABLE (≤ 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  .home-page {
+    /* ===== MASTER WIDGET CONTROLS ===== */
+
+    /* ICON chip */
+    --icon-size: 14vw;          /* Figma ~50–55px. Increase/decrease */
+
+    /* PHOTO chip */
+    --photo-size: 14vw;         /* same as icon */
+
+    /* YELLOW banner */
+    --banner-width: 44vw;       /* Figma width */
+    --banner-height: 12vw;      /* Figma height */
+
+    /* EXPLORE button */
+    --explore-width: 72vw;      /* Figma ~260px width */
+    --explore-height: auto;     /* auto keeps your shape */
+
+    /* SPACING */
+    --widget-gap: 12px;         /* between icon/photo/banner */
+    --explore-gap: 16px;        /* spacing above Explore */
+  }
+
+  /* ---------------- LAYOUT ---------------- */
+
+  .widgets__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--widget-gap);
+  }
+
+  /* icon */
+  .widget-img--icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    order: 1;
+  }
+
+  /* photo */
+  .widget-img--photo {
+    width: var(--photo-size);
+    height: var(--photo-size);
+    order: 2;
+  }
+
+  /* yellow banner */
+  .widget-banner--hero {
+    width: var(--banner-width);
+    height: var(--banner-height);
+    order: 3;
+  }
+
+  /* explore */
+  .widget-img--explore {
+    width: var(--explore-width);
+    height: var(--explore-height);
+    order: 4;
+    margin-top: var(--explore-gap);
+  }
+
+  .widget-img--explore img {
+    width: 100%;
+  }
+
+  /* Remove desktop transforms */
+  .widget-img,
+  .widget-banner {
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   FINAL MOBILE WIDGET LAYOUT (MATCH FIGMA)  ≤ 768px
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* spacing around widget strip */
+  .home-page .widgets {
+    padding: 12px 16px 32px;
+  }
+
+  /* ROW = icon | photo | banner
+     ROW2 = Explore centered */
+  .home-page .widgets__row {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    column-gap: 10px;
+    row-gap: 14px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* kill desktop transforms */
+  .home-page .widget-img,
+  .home-page .widget-banner {
+    transform: none !important;
+    margin: 0;
+  }
+
+  /* sizes – tweak these if you want */
+  .home-page {
+    --icon-size: 52px;
+    --photo-size: 52px;
+    --banner-height: 52px;
+    --explore-width: 260px;
+  }
+
+  /* icon chip (left) */
+  .home-page .widget-img--icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    justify-self: center;
+  }
+
+  /* photo chip (middle) */
+  .home-page .widget-img--photo {
+    grid-column: 2;
+    grid-row: 1;
+    width: var(--photo-size);
+    height: var(--photo-size);
+    justify-self: center;
+  }
+
+  /* yellow banner (right) */
+  .home-page .widget-banner--hero {
+    grid-column: 3;
+    grid-row: 1;
+    height: var(--banner-height);
+    width: 100%;
+  }
+
+  .home-page .widget-banner--hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Explore – full row below, centered */
+  .home-page .widget-img--explore {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    justify-self: center;
+    width: var(--explore-width);
+    margin-top: 10px;
+  }
+
+  .home-page .widget-img--explore img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile header spacing so the "abstruckt*" logo isn't cut */
+@media (max-width: 768px) {
+  .header {
+    padding-top: 28px;                    /* more space above logo */
+    padding-bottom: 12px;
+    padding-left: clamp(16px, 6vw, 32px);
+    padding-right: clamp(16px, 6vw, 32px);
+  }
+
+  .header .logo,
+  .header .logo img {
+    display: block;
+    margin-top: 0;                        /* remove any upward shift */
+    height: 24px;                         /* slightly smaller so it breathes */
+  }
+}
+
+
+
+/* FINAL mobile fix so "abstruckt*" isn't cut */
+@media (max-width: 768px) {
+  .header {
+    padding-top: 30px;              /* more space above the logo */
+    padding-bottom: 14px;
+  }
+
+  .header .logo img {
+    display: block;                 /* no baseline clipping */
+    height: auto;                   /* let image keep aspect */
+    max-height: 28px;               /* gentle cap for mobile */
   }
 }
